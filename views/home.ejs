@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h2>The total number of users are : <%= count %></h2>
+    <h3>Join us today</h3>
+    <form action="/user" method="post">
+        <input type="text" name="username" placeholder="enter username">
+        <input type="email" name="email" placeholder="Enter email">
+        <input type="password" name="password" placeholder="enter password">
+        <button>sumbit</button>
+    </form>
+    <br><br><br>
+    <h3>Search For User</h3>
+    <form action="/" method="get">
+        <input type="search" name="search" placeholder="Search by username or email">
+        <button>search</button>
+    </form>
+    <% if (search && users.length > 0) { %>
+        <h3>Search Results</h3>
+        <ul>
+            <% users.forEach(user => { %>
+            
+                <li> <p><b>Id:</b> <%= user.id %></p>
+                 <p><b>Username:</b> <%= user.username %></p>
+                <p><b>Email:</b> <%= user.email %></p> </li>
+            
+            <% }) %>
+        </ul>
+    <% } else if (search) { %>
+        <p>No users found.</p>
+    <% } %>
+</body>
+</html>
